@@ -53,4 +53,20 @@ function tancarBDD($connexio){
     return $connexio;
     }
 
+/**
+ * Summary of crearUsuari
+ * @param
+ * @return
+ */
+function crearUsuari($nom,$correu,$password){
+  $conexio=obrirBDD();
+    if(!is_null($conexio)){
+      $setencia = "INSERT INTO usuaris (nom, correu, contrasenya) VALUES (:nom, :correu, :password)";
+      $array=array(':nom' => $nom, ':correu' => $correu, ':password' => $password);
+
+      $result=executarSentencia($setencia,$array,$conexio);
+
+      $conexio=tancarBDD($conexio);
+    }
+}
 ?>

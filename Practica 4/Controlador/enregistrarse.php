@@ -17,6 +17,9 @@ function validarDades($nom,$correu,$password,$password2){
     if(empty($password)){
         $errors.="Contrasenya buit <br>";
     }
+    if($password!=$password2){
+        $errors.="Les contrasenyes han de ser iguals <br>";
+    }
     if(empty($password2)){
         $errors.="Has de que tornar a intorduir la contrasenya <br>";
     }
@@ -45,6 +48,15 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 
     if($errors==""){
         $correcte="Totes les dades son correctes";
+        $password = hash('sha512',$password);
+        try{crearUsuari($nom,$correu,$password);
+            $correcte.="Usuari Afegit";}
+        catch(PDOException $e){
+            echo $e;
+            $errors.="Aquest correu ja existeix a la base de dades.";
+        }
+        
+        
 
     }
     //Un include perque carregui tot l'HTML desde aqui per tenir les variables i el HTML en el mateix lloc.

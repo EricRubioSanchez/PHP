@@ -22,11 +22,11 @@
             <label><h1>Enregistrar</h1></label>
             <br>
             <label>
-                    Nom: <input type="text" required name="nom" value="<?php if(isset($nom)){echo $nom;}?>">
+                    Nom: <input type="text" required name="nom" maxlength="20" minlength="1" value="<?php if(isset($nom)){echo $nom;}?>">
             </label>
             <br>
             <label>Correu electronic:
-                <input type="email" name="correu" required value="<?php if(isset($correu)){echo $correu;}?>">
+                <input type="email" name="correu" maxlength="30" minlength="4" required value="<?php if(isset($correu)){echo $correu;}?>">
             </label>
             <br>
             <label>Contrasenya:
